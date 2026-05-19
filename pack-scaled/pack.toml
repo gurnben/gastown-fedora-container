@@ -38,6 +38,12 @@ scope    = "city"
 mode     = "always"
 
 [[named_session]]
+name     = "security-1"
+template = "security"
+scope    = "city"
+mode     = "always"
+
+[[named_session]]
 name     = "senior-1"
 template = "senior"
 scope    = "city"
@@ -66,6 +72,12 @@ mode     = "always"
 [[named_session]]
 name     = "qe-2"
 template = "qe"
+scope    = "city"
+mode     = "always"
+
+[[named_session]]
+name     = "security-2"
+template = "security"
 scope    = "city"
 mode     = "always"
 
@@ -102,6 +114,12 @@ scope    = "city"
 mode     = "always"
 
 [[named_session]]
+name     = "security-3"
+template = "security"
+scope    = "city"
+mode     = "always"
+
+[[named_session]]
 name     = "senior-3"
 template = "senior"
 scope    = "city"
@@ -130,6 +148,12 @@ mode     = "always"
 [[named_session]]
 name     = "qe-4"
 template = "qe"
+scope    = "city"
+mode     = "always"
+
+[[named_session]]
+name     = "security-4"
+template = "security"
 scope    = "city"
 mode     = "always"
 
@@ -166,6 +190,12 @@ scope    = "city"
 mode     = "always"
 
 [[named_session]]
+name     = "security-5"
+template = "security"
+scope    = "city"
+mode     = "always"
+
+[[named_session]]
 name     = "senior-5"
 template = "senior"
 scope    = "city"
@@ -194,6 +224,12 @@ mode     = "always"
 [[named_session]]
 name     = "qe-6"
 template = "qe"
+scope    = "city"
+mode     = "always"
+
+[[named_session]]
+name     = "security-6"
+template = "security"
 scope    = "city"
 mode     = "always"
 

@@ -1,0 +1,5 @@
+provider              = "claude"
+scope                 = "rig"
+min_active_sessions   = 0
+max_active_sessions   = 6
+idle_timeout          = "30m"

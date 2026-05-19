@@ -32,6 +32,11 @@ scope    = "city"
 mode     = "always"
 
 [[named_session]]
+template = "security"
+scope    = "city"
+mode     = "always"
+
+[[named_session]]
 template = "senior"
 scope    = "city"
 mode     = "always"

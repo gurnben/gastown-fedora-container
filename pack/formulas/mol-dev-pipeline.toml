@@ -8,8 +8,8 @@ gc sling planner <plan-bead-id>
 ```
 In scaled mode: `gc sling planner-1 <bead-id>`
 
-The planner dispatches to the dog pool. QE and senior review run in parallel."""
-version     = 3
+The planner dispatches to the dog pool. QE, security, and senior review run in parallel."""
+version     = 4
 
 [vars.feature]
 description = "Short feature name for task titles"
@@ -47,6 +47,14 @@ Validate test coverage and ensure all tests pass for: {{feature}}.
 Run the test suite, assess coverage, write missing tests, report findings."""
 
 [[steps]]
+id          = "security-review"
+title       = "Security review: {{feature}}"
+needs       = ["develop"]
+description = """
+Perform an ASVS v5.0.0 security review on the changes for: {{feature}}.
+Provide a structured report of vulnerabilities and remediation steps."""
+
+[[steps]]
 id          = "senior-review"
 title       = "Senior review: {{feature}}"
 needs       = ["develop"]
@@ -57,9 +65,9 @@ for: {{feature}}. Provide structured feedback with file:line references."""
 [[steps]]
 id          = "fix-cycle"
 title       = "Fix cycle: {{feature}}"
-needs       = ["qe-validate", "senior-review"]
+needs       = ["qe-validate", "senior-review", "security-review"]
 description = """
-Address feedback from QE and senior review. Create targeted fix-beads
+Address feedback from QE, security, and senior review. Create targeted fix-beads
 from `/workspace` and dispatch to dogs. If no fixes needed, close immediately."""
 
 [[steps]]
