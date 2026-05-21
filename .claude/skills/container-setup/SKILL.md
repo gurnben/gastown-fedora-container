@@ -38,7 +38,7 @@ podman stop gascity 2>/dev/null; podman rm gascity 2>/dev/null
 ### Basic (direct API keys)
 
 ```bash
-podman run -d --name gascity --pids-limit=-1 \
+podman run -d --name gascity --init --pids-limit=-1 \
   --userns=keep-id:uid=1000,gid=1000 \
   -v ~/Projects:/workspace:Z \
   -v ~/.config:/home/gascity/.config:Z \
@@ -52,7 +52,7 @@ podman run -d --name gascity --pids-limit=-1 \
 ### Google Cloud / Vertex AI
 
 ```bash
-podman run -d --name gascity --pids-limit=-1 \
+podman run -d --name gascity --init --pids-limit=-1 \
   --userns=keep-id:uid=1000,gid=1000 \
   -v ~/Projects:/workspace:Z \
   -v ~/.config:/home/gascity/.config:Z \
@@ -75,6 +75,8 @@ podman run -d --name gascity --pids-limit=-1 \
 
 ### Key flags
 
+- **`--init`** — injects a tiny init process (tini) as PID 1 to reap zombie processes;
+  without this, gascity's many subprocess spawns accumulate thousands of zombies
 - **`--pids-limit=-1`** — gascity needs more than Podman's default 2048 processes
 - **`--userns=keep-id:uid=1000,gid=1000`** — maps host UID to container user for file access
 - **`sleep infinity`** — keeps the container alive; gascity supervisor starts manually
