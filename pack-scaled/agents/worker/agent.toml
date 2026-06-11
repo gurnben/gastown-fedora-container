@@ -1,0 +1,5 @@
+scope                 = "city"
+fallback              = true
+min_active_sessions   = 0
+max_active_sessions   = 48
+idle_timeout          = "2h"

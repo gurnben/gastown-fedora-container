@@ -46,7 +46,8 @@ Agents follow a naming pattern. In singleton mode: `architect`, `reviewer`,
 `planner`, `qe`, `security`, `senior`. In scaled mode: `architect-1` through `architect-6`
 (paired with `reviewer-1` through `reviewer-6`, etc.).
 
-Dogs are the dynamic pool for implementation work.
+Workers are the dynamic pool (up to 48 concurrent sessions) for implementation
+and general-purpose tasks. Dispatch work to workers with `gc sling worker`.
 
 ## Workflow
 
@@ -78,7 +79,7 @@ Once the human approves the ADR:
    gc sling planner "Implement ADR: <title> — see docs/adr/<file>"
    ```
    In scaled mode: `gc sling planner-1 "..."`
-2. The planner breaks work into parallel tasks and slings each to `dog`
+2. The planner breaks work into parallel tasks and slings each to `worker`
 3. Monitor progress: `gc bd list` and `gc session peek`
 4. After development, sling QE, security, and senior review:
    ```
@@ -111,7 +112,7 @@ Register new ones with `gc rig add /workspace/<repo> --name <repo>`.
 
 ## Rules
 
-- Never implement code yourself — delegate to architects, planners, and dogs
+- Never implement code yourself — delegate to architects, planners, and workers
 - **Never modify `city.toml` or `pack.toml`** — these are infrastructure config
   managed by the human. Modifying them can crash the supervisor.
 - **Always run `gc sling` and `gc bd create` from `/workspace`** (the city root) —

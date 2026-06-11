@@ -8,7 +8,7 @@ gc sling planner <plan-bead-id>
 ```
 In scaled mode: `gc sling planner-1 <bead-id>`
 
-The planner dispatches to the dog pool. QE, security, and senior review run in parallel."""
+The planner dispatches to the worker pool. QE, security, and senior review run in parallel."""
 version     = 4
 
 [vars.feature]
@@ -23,11 +23,11 @@ title       = "Plan work: {{feature}}"
 description = """
 Read the approved ADR at {{adr}}. Break the work into parallel tasks with
 explicit file ownership boundaries. Create and dispatch each task to the
-dog pool from `/workspace`:
+worker pool from `/workspace`:
 ```bash
 cd /workspace
 gc bd create "Implement <component>: {{feature}}"
-gc sling dog <bead-id>
+gc sling worker <bead-id>
 ```"""
 
 [[steps]]
@@ -35,7 +35,7 @@ id          = "develop"
 title       = "Implement: {{feature}}"
 needs       = ["plan"]
 description = """
-Development work dispatched by the planner. Dog pool agents implement
+Development work dispatched by the planner. Worker pool agents implement
 their assigned tasks. Complete when all sub-task beads are closed."""
 
 [[steps]]
@@ -68,7 +68,7 @@ title       = "Fix cycle: {{feature}}"
 needs       = ["qe-validate", "senior-review", "security-review"]
 description = """
 Address feedback from QE, security, and senior review. Create targeted fix-beads
-from `/workspace` and dispatch to dogs. If no fixes needed, close immediately."""
+from `/workspace` and dispatch to workers. If no fixes needed, close immediately."""
 
 [[steps]]
 id          = "final-check"
